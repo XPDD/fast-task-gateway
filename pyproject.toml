@@ -9,6 +9,7 @@ dependencies = [
     "uvicorn[standard]>=0.30.0",
     "httpx[http2]>=0.27.0",
     "pyyaml>=6.0.1",
+    "py-consul>=1.1.0",
     "fast-task-base @ git+https://github.com/XPDD/fast-task-base.git",
 ]
 

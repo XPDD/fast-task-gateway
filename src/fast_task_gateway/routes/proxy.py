@@ -4,8 +4,9 @@ Dynamic proxy routes based on Consul service discovery
 
 from fastapi import APIRouter, Request, HTTPException, status
 
+from fast_task_base.service import ConsulService
+
 from ..config import get_config
-from ..consul import ConsulClient
 from ..client import get_http_client
 from ..proxy import proxy_request
 
@@ -41,7 +42,7 @@ async def catch_all_proxy(
         )
 
     # Discover backend via Consul
-    consul: ConsulClient = request.app.state.consul
+    consul: ConsulService = request.app.state.consul
     target_url = await consul.discover(matched_route.service)
 
     if not target_url:
