@@ -1,0 +1,22 @@
+gateway:
+  name: fast-task-gateway
+  service_id: fast-task-gateway-1
+  host: 0.0.0.0
+  port: 8080
+  health_path: /health
+
+consul:
+  host: consul
+  port: 8500
+  scheme: http
+
+routes:
+  - prefix: /api/server
+    service: fast-task-server
+    strip_prefix: true
+    auth_required: true
+
+  - prefix: /api/ui
+    service: fast-task-ui
+    strip_prefix: false
+    auth_required: false
