@@ -31,7 +31,6 @@ class RouteConfig:
     prefix: str
     service: str
     strip_prefix: bool = True
-    auth_required: bool = True
 
 
 @dataclass
@@ -71,7 +70,6 @@ class Config:
                 prefix=r.get("prefix", ""),
                 service=r.get("service", ""),
                 strip_prefix=r.get("strip_prefix", True),
-                auth_required=r.get("auth_required", True),
             ))
 
         return cls(gateway=gateway, consul=consul, routes=routes)

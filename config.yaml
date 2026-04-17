@@ -14,9 +14,7 @@ routes:
   - prefix: /api/server
     service: fast-task-server
     strip_prefix: true
-    auth_required: true
 
   - prefix: /api/ui
     service: fast-task-ui
     strip_prefix: false
-    auth_required: false

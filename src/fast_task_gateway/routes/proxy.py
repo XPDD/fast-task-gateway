@@ -2,13 +2,12 @@
 Dynamic proxy routes based on Consul service discovery
 """
 
-from fastapi import APIRouter, Request, Depends, HTTPException, status
+from fastapi import APIRouter, Request, HTTPException, status
 
 from ..config import get_config
 from ..consul import ConsulClient
 from ..client import get_http_client
 from ..proxy import proxy_request
-from ..auth import gateway_auth
 
 
 router = APIRouter()
@@ -18,7 +17,6 @@ router = APIRouter()
 async def catch_all_proxy(
     path: str,
     request: Request,
-    user: dict = Depends(gateway_auth),
 ):
     """
     Catch-all proxy endpoint.
